@@ -39,6 +39,9 @@ function FixFooter() {
             Github
           </Link>
         </div>
+        <div className="copyright">
+          &copy; {new Date().getFullYear()} Sujal Patel. All rights reserved.
+        </div>
       </div>
     </div>
   );

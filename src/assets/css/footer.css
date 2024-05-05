@@ -43,3 +43,8 @@
   gap: 5px;
   font-weight: normal;
 }
+.copyright {
+  color: var(--canvas);
+  font-size: 12px;
+  margin-top: 20px;
+}
