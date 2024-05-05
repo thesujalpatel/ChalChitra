@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ChalChitra/static/css/main.23203bbe.css",
-    "main.js": "/ChalChitra/static/js/main.f0a63a14.js",
+    "main.css": "/ChalChitra/static/css/main.95d414e9.css",
+    "main.js": "/ChalChitra/static/js/main.ef4bcd4b.js",
     "static/js/453.29f11087.chunk.js": "/ChalChitra/static/js/453.29f11087.chunk.js",
     "static/media/museo700regular.ttf": "/ChalChitra/static/media/museo700regular.de61b0927a06c04a1ebc.ttf",
     "index.html": "/ChalChitra/index.html",
-    "main.23203bbe.css.map": "/ChalChitra/static/css/main.23203bbe.css.map",
-    "main.f0a63a14.js.map": "/ChalChitra/static/js/main.f0a63a14.js.map",
+    "main.95d414e9.css.map": "/ChalChitra/static/css/main.95d414e9.css.map",
+    "main.ef4bcd4b.js.map": "/ChalChitra/static/js/main.ef4bcd4b.js.map",
     "453.29f11087.chunk.js.map": "/ChalChitra/static/js/453.29f11087.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.23203bbe.css",
-    "static/js/main.f0a63a14.js"
+    "static/css/main.95d414e9.css",
+    "static/js/main.ef4bcd4b.js"
   ]
 }
