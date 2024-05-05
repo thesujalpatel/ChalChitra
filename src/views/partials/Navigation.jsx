@@ -50,8 +50,9 @@ function Navigation(isOpen) {
       handleNavigation(isOpen);
     }
     const unsubscribe = async () => {
-      const fp = await userServices.getSelf();
-      setFp(fp);
+      await userServices.getSelf().then((user) => {
+        setFp(user);
+      });
     };
     return () => {
       unsubscribe();
