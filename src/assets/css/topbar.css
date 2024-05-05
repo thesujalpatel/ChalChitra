@@ -1,0 +1,56 @@
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 10px;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: color-mix(
+    in srgb,
+    var(--canvas),
+    transparent var(--bg_transparency)
+  );
+  backdrop-filter: blur(var(--blur));
+}
+
+.top-bar > div {
+  position: sticky;
+  top: 0;
+}
+
+.tb-page-name {
+  font-size: 25px;
+  color: var(--sub_canvas);
+  padding-left: 25px;
+}
+.tb-left,
+.tb-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn > i {
+  color: var(--canvas);
+}
+
+.nav-btn {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .top-bar {
+    width: 100%;
+    left: 0;
+  }
+}

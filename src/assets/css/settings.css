@@ -1,0 +1,36 @@
+.theme-list {
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-card {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  flex-grow: 1;
+  flex-basis: 200px;
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+  background-color: var(--tertiary);
+}
+.sm-title {
+  position: relative;
+  width: 70%;
+  font-size: 20px;
+  background-color: var(--sub_canvas);
+  color: var(--canvas);
+  border-radius: 10px 10px 0 0;
+}
+.sm-content {
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub_canvas);
+}

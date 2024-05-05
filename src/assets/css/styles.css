@@ -1,0 +1,230 @@
+:root {
+  --background: #cfdbd5;
+  --canvas: #e8eddf;
+  --sub_canvas: #242423;
+  --primary: #333533;
+  --secondary: #ff7146;
+  --tertiary: #ffc420;
+  --blur: 5px;
+  --bg_transparency: 60%;
+
+  --landing_blur: 5px;
+  --landing_bg_transparency: 20%;
+
+  /* Notification blend ratio */
+  --notification_transparency: 30%;
+  --notification_blur: 4px;
+
+  --transition_time_short: 0.3s;
+  --transition_time_long: 0.5s;
+  --transition_type: ease-in-out;
+
+  --light_color: #ffffff;
+  --shadow_color: #5a5a5a;
+  --light_blend_ratio: 50%;
+  --light_angle: 145deg;
+
+  --toastify-color-dark: color-mix(
+    in srgb,
+    #121212,
+    transparent var(--notification_transparency)
+  );
+  --toastify-color-light: color-mix(
+    in srgb,
+    #fff,
+    transparent var(--notification_transparency)
+  );
+}
+.Toastify__toast-theme--dark {
+  backdrop-filter: blur(var(--notification_blur));
+}
+.Toastify__toast-theme--light {
+  backdrop-filter: blur(var(--notification_blur));
+}
+@font-face {
+  font-family: Custome;
+  src: url("../fonts/museo700regular.ttf");
+}
+* {
+  font-family: "Custome";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  user-select: none;
+  scrollbar-width: none;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+body {
+  overflow-x: hidden;
+  background-color: var(--background);
+}
+.layerff {
+  display: grid;
+}
+.layer1 {
+  z-index: 1;
+}
+.up-and-down {
+  display: grid;
+}
+.left-and-right {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+.universe {
+  min-height: 100dvh;
+  background-color: var(--background);
+}
+.title {
+  text-wrap: nowrap;
+  color: var(--sub_canvas);
+  font-size: normal;
+}
+
+.sub-title {
+  text-wrap: nowrap;
+  color: var(--secondary);
+  font-size: small;
+}
+
+.card {
+  background-color: var(--canvas);
+  border-radius: 20px;
+  /* height: 60vh; */
+  margin: 10px;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.card-backdrop {
+  height: 85%;
+  width: 100%;
+  padding: 15px;
+}
+
+.card-title {
+  height: 50px;
+  border-bottom: 5px solid var(--background);
+  color: var(--canvas);
+  background-color: var(--sub_canvas);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.back {
+  width: 150px;
+  cursor: pointer;
+  background-color: var(--secondary);
+  color: var(--canvas);
+  padding: 5px 0 5px 60px;
+  border-bottom-right-radius: 20px;
+  position: sticky;
+  top: 0;
+}
+.back i {
+  color: var(--canvas);
+  margin-right: 5px;
+}
+.back:hover {
+  background-color: var(--primary);
+}
+.back:hover i {
+  color: var(--canvas);
+}
+.icon-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.decoration {
+  position: relative;
+  z-index: 1;
+}
+.dec-item {
+  position: absolute;
+  z-index: 1;
+}
+.decoration {
+  position: relative;
+  z-index: 1;
+}
+.dec-item {
+  position: absolute;
+  z-index: 1;
+}
+.text-gradient {
+  background: linear-gradient(
+    var(--light_angle),
+    var(--sub_canvas),
+    var(--secondary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+}
+.chal {
+  font-size: 20px;
+  background: linear-gradient(
+    to right,
+    var(--primary),
+    var(--secondary),
+    var(--tertiary),
+    var(--primary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 5s linear infinite;
+}
+
+.chitra {
+  font-size: 20px;
+  transform: translate(-5px, 0);
+  background: linear-gradient(
+    to right,
+    var(--secondary),
+    var(--tertiary),
+    var(--primary),
+    var(--secondary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 5s linear infinite;
+}
+@keyframes gradient {
+  to {
+    background-position: -200% -200%;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-and-right {
+    grid-template-columns: 0 auto;
+  }
+}
