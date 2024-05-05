@@ -42,21 +42,13 @@ export function handleNavigation(isOpen) {
   );
 }
 
-function Navigation(isOpen) {
+function Navigation() {
   const [fp, setFp] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    if (isOpen === true || isOpen === false) {
-      handleNavigation(isOpen);
-    }
-    const unsubscribe = async () => {
-      await userServices.getSelf().then((user) => {
-        setFp(user);
-      });
-    };
-    return () => {
-      unsubscribe();
-    };
+    userServices.getSelf().then((user) => {
+      setFp(user);
+    });
   });
 
   return (

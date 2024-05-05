@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./../../assets/css/topbar.css";
-import Navigation, { handleNavigation } from "./Navigation";
+import { handleNavigation } from "./Navigation";
 import { motion as m, animate as a } from "framer-motion";
 import { useCookies } from "react-cookie";
 import { Clicky } from "./SmallComponents";
@@ -9,6 +9,7 @@ function Topbar() {
   const [cookies, setCookie] = useCookies(["navState"]);
   const [isOpen, setIsOpen] = useState(cookies.navState);
   useEffect(() => {
+    handleNavigation(isOpen);
     window.onclick = (e) => {
       if (!e.target.closest(".nav-btn") && !e.target.closest(".navigation")) {
         if (window.innerWidth < 768 && !isOpen) {
@@ -54,7 +55,6 @@ function Topbar() {
     }
     handleNavigation(isOpen);
   }
-  Navigation(isOpen);
   return (
     <div className="top-bar">
       <div className="tb-left">
