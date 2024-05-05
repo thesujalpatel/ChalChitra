@@ -10,9 +10,7 @@ function Notes() {
   const [notes, setNotes] = React.useState([]);
 
   useEffect(() => {
-    const unsubscribe = async () => {
-      noteServices.ListernToNotes(setNotes);
-    };
+    noteServices.ListernToNotes(setNotes);
     const displayNote = document.querySelector(".note-display");
     const displayPage = document.querySelector(".display-page");
     displayPage.addEventListener("click", (e) => {
@@ -35,9 +33,6 @@ function Notes() {
         }, 500);
       }
     });
-    return () => {
-      unsubscribe();
-    };
   }, []);
 
   async function createNote() {

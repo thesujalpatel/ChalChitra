@@ -24,7 +24,7 @@ class notesServices {
       const unsubscribe = onSnapshot(dbref, (snapshot) => {
         let list = [];
         snapshot.docs.map((doc) => {
-          return list.push({ id: doc.id, ...doc.data() });
+          list.push({ id: doc.id, ...doc.data() });
         });
         callback(list);
       });
