@@ -65,6 +65,8 @@
 }
 .nav-op-icon {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-section-v > div {
