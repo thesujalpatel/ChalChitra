@@ -11,13 +11,25 @@ function Topbar() {
   useEffect(() => {
     handleNavigation(isOpen);
     window.onclick = (e) => {
-      if (!e.target.closest(".nav-btn") && !e.target.closest(".navigation")) {
+      if (
+        !e.target.closest(".nav-btn") &&
+        !e.target.closest(".navigation") &&
+        !e.target.closest(".footer") &&
+        !e.target.closest(".footer-fix")
+      ) {
         if (window.innerWidth < 768 && !isOpen) {
           navBtnClicked();
         }
       }
+      if (
+        (e.target.closest(".icon-con") || e.target.closest(".nav-option")) &&
+        window.innerWidth < 768
+      ) {
+        navBtnClicked();
+      }
     };
   });
+
   function navBtnClicked() {
     setCookie("navState", !isOpen, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
