@@ -37,10 +37,10 @@ export function MainLogo(props) {
 export const Clicky = (color) => {
   return {
     whileHover: {
-      scale: 1.1,
+      scale: 1.07,
       boxShadow: `4px 4px 10px #5a5a5a, -4px -4px 10px color-mix(in srgb, ${color}, var(--light_color) var(--light_blend_ratio))`,
     },
-    whileTap: { scale: 1, boxShadow: "none" },
+    whileTap: { scale: 0.9, boxShadow: "none" },
     whileFocus: {
       scale: 1.07,
       boxShadow: `4px 4px 10px #5a5a5a, -4px -4px 10px color-mix(in srgb, ${color}, var(--light_color) var(--light_blend_ratio))`,
