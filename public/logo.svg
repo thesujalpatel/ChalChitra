@@ -12,15 +12,15 @@
         }
 
         .st2 {
-            fill: #333533;;
+            fill: #333533;
         }
 
         .st3 {
-            fill: #333533;;
+            fill: color-mix(in srgb, #f0cc68, #ff7146 50%);
         }
 
         .st4 {
-            fill: #f0cc68;
+            fill: color-mix(in srgb, #f0cc68, #333533 50%);
         }
     </style>
 <path class="st0" d="M349.39,395.64c-12.94-13.03-23.18-28.48-30.14-45.48c-6.96-16.99-10.49-35.19-10.41-53.56
