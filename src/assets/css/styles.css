@@ -157,14 +157,6 @@ body {
   position: absolute;
   z-index: 1;
 }
-.decoration {
-  position: relative;
-  z-index: 1;
-}
-.dec-item {
-  position: absolute;
-  z-index: 1;
-}
 .text-gradient {
   background: linear-gradient(
     var(--light_angle),
