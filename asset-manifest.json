@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ChalChitra/static/css/main.a0def408.css",
-    "main.js": "/ChalChitra/static/js/main.b7033993.js",
+    "main.js": "/ChalChitra/static/js/main.e2b9e768.js",
     "static/js/453.29f11087.chunk.js": "/ChalChitra/static/js/453.29f11087.chunk.js",
     "index.html": "/ChalChitra/index.html",
     "main.a0def408.css.map": "/ChalChitra/static/css/main.a0def408.css.map",
-    "main.b7033993.js.map": "/ChalChitra/static/js/main.b7033993.js.map",
+    "main.e2b9e768.js.map": "/ChalChitra/static/js/main.e2b9e768.js.map",
     "453.29f11087.chunk.js.map": "/ChalChitra/static/js/453.29f11087.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a0def408.css",
-    "static/js/main.b7033993.js"
+    "static/js/main.e2b9e768.js"
   ]
 }
