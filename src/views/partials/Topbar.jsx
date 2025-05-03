@@ -7,66 +7,62 @@ import { Clicky } from "./SmallComponents";
 
 function Topbar() {
   const [cookies, setCookie] = useCookies(["navState"]);
-  const [isOpen, setIsOpen] = useState(cookies.navState);
+  const [isOpen, setIsOpen] = useState(cookies.navState ?? false);
+
+  // Run animation ONLY when isOpen changes
   useEffect(() => {
     handleNavigation(isOpen);
-    window.onclick = (e) => {
-      if (
+  }, [isOpen]);
+
+  // Only set up global click listener once
+  useEffect(() => {
+    const handleClick = (e) => {
+      const clickedOutside =
         !e.target.closest(".nav-btn") &&
         !e.target.closest(".navigation") &&
         !e.target.closest(".footer") &&
-        !e.target.closest(".footer-fix")
-      ) {
-        if (window.innerWidth < 768 && !isOpen) {
-          navBtnClicked();
-        }
-      }
-      if (
-        (e.target.closest(".icon-con") || e.target.closest(".nav-option")) &&
-        window.innerWidth < 768
-      ) {
-        navBtnClicked();
+        !e.target.closest(".footer-fix");
+
+      const clickedNavItem =
+        e.target.closest(".icon-con") || e.target.closest(".nav-option");
+
+      if (window.innerWidth < 768) {
+        if (clickedOutside && !isOpen) navBtnClicked();
+        if (clickedNavItem) navBtnClicked();
       }
     };
-  });
 
-  function navBtnClicked() {
-    setCookie("navState", !isOpen, {
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, [isOpen]);
+
+  const navBtnClicked = () => {
+    const newState = !isOpen;
+    setCookie("navState", newState, {
+      expires: new Date(Date.now() + 86400000),
       path: "/",
     });
-    setIsOpen(!isOpen);
-    const icon = document.querySelector(".icon");
-    const resolution = window.innerWidth;
+    setIsOpen(newState);
 
-    if (resolution >= 768) {
+    const icon = document.querySelector(".icon");
+    if (icon) {
       a(
         icon,
-        { rotate: isOpen ? 0 : 180 },
-        {
-          delay: 0.5,
-          type: "spring",
-          stiffness: 500,
-          damping: 50,
-          duration: 0.5,
-          ease: "easeInOut",
-        }
-      );
-    } else {
-      a(
-        icon,
-        { rotate: isOpen ? 0 : 180 },
+        { rotate: newState ? 180 : 0 },
         {
           type: "spring",
           stiffness: 500,
           damping: 50,
           duration: 0.5,
           ease: "easeInOut",
+          delay: window.innerWidth >= 768 ? 0.5 : 0,
         }
       );
     }
-    handleNavigation(isOpen);
-  }
+
+    // Navigation animation is handled in useEffect via isOpen
+  };
+
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString()
   );
@@ -75,7 +71,6 @@ function Topbar() {
     const interval = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString());
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -88,9 +83,9 @@ function Topbar() {
           onClick={navBtnClicked}
         >
           <m.i
-            initial={{ rotate: isOpen ? 180 : 0 }}
             className="fa-solid fa-bars-staggered icon"
-          ></m.i>
+            initial={{ rotate: isOpen ? 180 : 0 }}
+          />
         </m.div>
         <div className="tb-page-name">
           {window.location.pathname.split("/").pop() || "Home"}
@@ -102,4 +97,5 @@ function Topbar() {
     </div>
   );
 }
+
 export default Topbar;
