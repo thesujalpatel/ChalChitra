@@ -94,14 +94,14 @@ function Navigation() {
           </div>
         </div>
         <div className="nav-section-v">
-          <div className="nav-option" onClick={() => navigate("/home")}>
+          {/* <div className="nav-option" onClick={() => navigate("/home")}>
             <div className="icon-con">
               <i className="i fa-solid fa-house"></i>
             </div>
             <m.div initial={{ x: -250 }} className="option-title">
               Home
             </m.div>
-          </div>
+          </div> */}
           <div className="nav-option" onClick={() => navigate("/notes")}>
             <div className="icon-con">
               <i className="fa-solid fa-note-sticky"></i>

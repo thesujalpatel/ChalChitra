@@ -1,10 +1,11 @@
 :root {
-  --background: #cfdbd5;
-  --canvas: #e8eddf;
-  --sub_canvas: #242423;
-  --primary: #333533;
-  --secondary: #ff7146;
-  --tertiary: #ffc420;
+  --background: #fef6f0;
+  --canvas: #ffffff;
+  --sub_canvas: #1e1e1e;
+  --primary: #2e2e2e;
+  --secondary: #ff5c58;
+  --tertiary: #ffce3d;
+
   --blur: 5px;
   --bg_transparency: 60%;
 
@@ -41,12 +42,9 @@
 .Toastify__toast-theme--light {
   backdrop-filter: blur(var(--notification_blur));
 }
-@font-face {
-  font-family: Custome;
-  src: url("../fonts/museo700regular.ttf");
-}
+
 * {
-  font-family: "Custome";
+  font-family: "Roboto Slab", serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

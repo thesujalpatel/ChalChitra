@@ -20,7 +20,7 @@ function AuthContext({ children }) {
           setCookie("navState", false, { path: "/" });
         }
         if (!cookies.theme) {
-          setCookie("theme", "Crystals", { path: "/" });
+          setCookie("theme", "Soft Creative", { path: "/" });
         } else {
           const theme = cookies.theme;
           const themeSet = (await serverServices.getServer("themes")).data;
@@ -28,7 +28,7 @@ function AuthContext({ children }) {
             setTheme(themeSet[theme]);
           } catch (e) {
             toast.error(`${theme} theme not found`);
-            setCookie("theme", "Crystals", { path: "/" });
+            setCookie("theme", "Soft Creative", { path: "/" });
           }
         }
         if (user) {
@@ -51,11 +51,29 @@ function AuthContext({ children }) {
       setLoading(false);
     }
   }, [cookies.theme, cookies.navState, setCookie]);
+
   const values = {
     user,
   };
-  return (
-    <Context.Provider value={values}>{!loading && children}</Context.Provider>
-  );
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: "30px",
+          fontWeight: "bold",
+          color: "var(--primary)",
+        }}
+      >
+        Loading...
+      </div>
+    );
+  }
+
+  return <Context.Provider value={values}>{children}</Context.Provider>;
 }
 export default AuthContext;

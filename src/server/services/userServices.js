@@ -67,22 +67,12 @@ class userServices {
   async emailPassword(email, password) {
     const auth = getAuth();
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+      await createUserWithEmailAndPassword(auth, email, password);
       toast.success("User Created Successfully\nRedirecting...");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         try {
-          const userCredential = await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
-          const user = userCredential.user;
+          await signInWithEmailAndPassword(auth, email, password);
           toast.success("Logged In Successfully\nRedirecting...");
         } catch (signInError) {
           toast.error(signInError.message);

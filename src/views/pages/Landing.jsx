@@ -16,7 +16,7 @@ function Landing() {
             <div className="imid">
               <MainLogo className="landding-logo" />
             </div>
-            <div className="gooo" onClick={() => navigate("/home")}>
+            <div className="gooo" onClick={() => navigate("/notes")}>
               Let's Start
             </div>
           </div>

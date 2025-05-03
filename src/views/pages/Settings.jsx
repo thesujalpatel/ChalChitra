@@ -8,7 +8,28 @@ function Settings() {
   function pickTheme(theme) {
     setCookie("theme", theme, { path: "/" });
   }
-  const list = ["Crystals", "Cotton Candy", "Frozen", "Sunny", "Ocean Breeze"];
+  const list = [
+    "Soft Creative",
+    "Frosted Aurora",
+    "Warm Minimal",
+    "Luxury Dark Gold",
+    "Nature Fresh",
+    "Cool Ocean",
+    "Muted Retro",
+    "Soft Rose & Charcoal",
+    "Citrus Bright",
+    "Smoky Indigo",
+    "Peachy Bloom",
+    "Cotton Candy Mist",
+    "Sunset Sand",
+    "Minty Clean",
+    "Lavender Dreams",
+    "Apricot Mood",
+    "Velvet Rose",
+    "Lush Berry",
+    "Clay & Blush",
+    "Sky Bloom",
+  ];
   return (
     <div>
       <div className="card">

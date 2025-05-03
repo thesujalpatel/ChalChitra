@@ -5,8 +5,13 @@ function FixFooter() {
   return (
     <div className="footer-fix">
       <div className="footer-fix-section">
-        <div className="footer-fix-sub-title">MADE BY</div>
-        <div className="footer-fix-title ">Sujal Patel</div>
+        <Link
+          to="https://thesujalpatel.github.io"
+          target="_blank"
+          className="footer-fix-sub-title"
+        >
+          Made with <i className="fa-solid fa-heart love"></i> Sujal Patel
+        </Link>
         <div className="social">
           <Link
             className="so-op"
@@ -39,6 +44,7 @@ function FixFooter() {
             Github
           </Link>
         </div>
+
         <div className="copyright">
           &copy; {new Date().getFullYear()} Sujal Patel. All rights reserved.
         </div>

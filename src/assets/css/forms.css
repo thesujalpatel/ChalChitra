@@ -32,6 +32,13 @@ input[type="file"]::file-selector-button:hover {
   color: var(--canvas);
   transition: 0.2s all linear;
 }
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: var(--primary) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
 [type="file"] {
   padding-top: 10px;
 }
@@ -76,18 +83,15 @@ input[type="submit"] {
   background-color: var(--secondary);
   color: var(--canvas);
   cursor: pointer;
-  transition: 0.2s all linear;
   border-radius: 10px;
   border: 3px solid transparent;
 }
 input[type="submit"]:focus {
   border: 3px solid var(--primary);
-  transition: 0.2s all linear;
 }
 input[type="submit"]:hover {
   background-color: var(--primary);
   color: var(--canvas);
-  transition: 0.2s all linear;
 }
 .ii-con {
   background-color: var(--background);
