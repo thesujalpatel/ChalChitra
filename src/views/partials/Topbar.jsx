@@ -97,7 +97,7 @@ function Topbar() {
         </div>
       </div>
       <div className="tb-right">
-        <div className="logo-text">{currentTime}</div>
+        <div className="time-text">{currentTime}</div>
       </div>
     </div>
   );

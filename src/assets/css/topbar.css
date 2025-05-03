@@ -51,8 +51,10 @@
   background-color: var(--secondary);
   cursor: pointer;
 }
-.logo-text {
-  font-size: 23px;
+.time-text {
+  font-size: 25px;
+  color: var(--sub_canvas);
+  text-transform: capitalize;
 }
 @media screen and (max-width: 768px) {
   .top-bar {
