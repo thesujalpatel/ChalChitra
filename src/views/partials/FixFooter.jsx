@@ -10,8 +10,7 @@ function FixFooter() {
           target="_blank"
           className="footer-fix-sub-title"
         >
-          Made with <i className="fa-solid fa-heart love"></i> Sujal Patel
-        </Link>
+          Made with <i className="fa-solid fa-heart love"></i> by Sujal</Link>
         <div className="social">
           <Link
             className="so-op"
