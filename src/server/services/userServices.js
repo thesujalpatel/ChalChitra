@@ -11,65 +11,90 @@ import {
 } from "firebase/firestore";
 
 import {
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  sendSignInLinkToEmail,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 const dbref = collection(db, "users");
 
 class userServices {
-  async verifyPhone(phone) {
-    const recaptchaVerifier = new RecaptchaVerifier(
-      auth,
-      "recaptcha-container",
-      {
-        size: "invisible",
-        callback: (response) => {
-          toast.success("Recaptcha resolved");
-        },
-        "expired-callback": () => {
-          toast.error("Recaptcha expired");
-        },
-      }
-    );
-    await recaptchaVerifier.render();
+  // async verifyPhone(phone) {
+  //   const recaptchaVerifier = new RecaptchaVerifier(
+  //     auth,
+  //     "recaptcha-container",
+  //     {
+  //       size: "invisible",
+  //       callback: (response) => {
+  //         toast.success("Recaptcha resolved");
+  //       },
+  //       "expired-callback": () => {
+  //         toast.error("Recaptcha expired");
+  //       },
+  //     }
+  //   );
+  //   await recaptchaVerifier.render();
+  //   try {
+  //     return signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+  //   } catch (error) {
+  //     toast.error("OTP failed from service");
+  //   }
+  // }
+  // async sendEmail(email) {
+  //   try {
+  //     sendSignInLinkToEmail(auth, email, {
+  //       url: window.location.href,
+  //       handleCodeInApp: true,
+  //     }).then(() => {
+  //       if (isSignInWithEmailLink(auth, window.location.href)) {
+  //         let email = window.localStorage.getItem("emailForSignIn");
+  //         if (!email) {
+  //           email = window.prompt("Please provide your email for confirmation");
+  //         }
+  //         signInWithEmailLink(auth, email, window.location.href)
+  //           .then((result) => {
+  //             window.localStorage.removeItem("emailForSignIn");
+  //           })
+  //           .catch((error) => {});
+  //         // amezi
+  //       }
+  //     });
+  //   } catch (error) {
+  //     toast.error("Email failed from service");
+  //   }
+  // }
+
+  async emailPassword(email, password) {
+    const auth = getAuth();
     try {
-      return signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      toast.success("User Created Successfully\nRedirecting...");
     } catch (error) {
-      toast.error("OTP failed from service");
-    }
-  }
-  async sendEmail(email) {
-    try {
-      sendSignInLinkToEmail(auth, email, {
-        url: window.location.href,
-        handleCodeInApp: true,
-      }).then(() => {
-        if (isSignInWithEmailLink(auth, window.location.href)) {
-          let email = window.localStorage.getItem("emailForSignIn");
-          if (!email) {
-            email = window.prompt("Please provide your email for confirmation");
-          }
-          signInWithEmailLink(auth, email, window.location.href)
-            .then((result) => {
-              window.localStorage.removeItem("emailForSignIn");
-            })
-            .catch((error) => {});
-          // amezi
+      if (error.code === "auth/email-already-in-use") {
+        try {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = userCredential.user;
+          toast.success("Logged In Successfully\nRedirecting...");
+        } catch (signInError) {
+          toast.error(signInError.message);
         }
-      });
-    } catch (error) {
-      toast.error("Email failed from service");
+      } else {
+        toast.error(error.message);
+      }
     }
   }
   async signOut() {
     try {
-      if (window.confirm("Do you want to SignOut?")) {
-        auth.signOut();
-      }
+      auth.signOut();
     } catch (error) {
       toast.error("Sign out failed from service");
     }
@@ -102,15 +127,10 @@ class userServices {
     return data;
   }
   async getSelf() {
-    try {
-      const docRef = doc(db, "users", auth.currentUser.uid);
-      const docSnap = await getDoc(docRef);
-      const data = docSnap.data();
-      return data;
-    } catch {
-      const data = { name: "Guest" };
-      return data;
-    }
+    const docRef = doc(db, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data();
+    return data;
   }
 }
 const service = new userServices();

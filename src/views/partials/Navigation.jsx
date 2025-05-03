@@ -43,13 +43,13 @@ export function handleNavigation(isOpen) {
 }
 
 function Navigation() {
-  const [fp, setFp] = useState({});
+  const [user, setuser] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    userServices.getSelf().then((user) => {
-      setFp(user);
+    userServices.getSelf().then((data) => {
+      setuser(data);
     });
-  });
+  }, []);
 
   return (
     <>
@@ -65,7 +65,9 @@ function Navigation() {
           <div className="profile">
             <Logo className="profile-img" />
           </div>
-          <div className="profile-name">{fp.name ? fp.name : "Loading..."}</div>
+          <div className="profile-name">
+            {user.name ? user.name : "Loading..."}
+          </div>
           <div className="nav-op-icon">
             <m.div className="icon-con" {...Clicky("var(--background)")}>
               <i className="fa-solid fa-user"></i>
@@ -80,7 +82,12 @@ function Navigation() {
             <m.div
               className="icon-con"
               {...Clicky("var(--background)")}
-              onClick={async () => await userServices.signOut()}
+              onClick={async () => {
+                if (window.confirm("Do you want to SignOut?")) {
+                  navigate("/");
+                  await userServices.signOut();
+                }
+              }}
             >
               <i className="fa-solid fa-right-from-bracket"></i>
             </m.div>

@@ -7,16 +7,17 @@ import {
   doc,
   addDoc,
   onSnapshot,
+  serverTimestamp,
 } from "firebase/firestore";
 
 class notesServices {
   async createNote(note) {
     const dbref = collection(db, "users", auth.currentUser.uid, "notes");
-    return await addDoc(dbref, note);
+    return await addDoc(dbref, { ...note, updatedAt: serverTimestamp() });
   }
   async updateNote(id, note) {
     const docRef = doc(db, "users", auth.currentUser.uid, "notes", id);
-    return await updateDoc(docRef, note);
+    return await updateDoc(docRef, { ...note, updatedAt: serverTimestamp() });
   }
   ListernToNotes(callback) {
     try {
@@ -26,6 +27,8 @@ class notesServices {
         snapshot.docs.map((doc) => {
           return list.push({ id: doc.id, ...doc.data() });
         });
+        // Sort notes by updatedAt in descending order
+        list.sort((a, b) => b.updatedAt?.toMillis() - a.updatedAt?.toMillis());
         callback(list);
       });
       return unsubscribe;

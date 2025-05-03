@@ -67,6 +67,18 @@ function Topbar() {
     }
     handleNavigation(isOpen);
   }
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString()
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="top-bar">
       <div className="tb-left">
@@ -80,10 +92,12 @@ function Topbar() {
             className="fa-solid fa-bars-staggered icon"
           ></m.i>
         </m.div>
-        <div className="tb-page-name">Home</div>
+        <div className="tb-page-name">
+          {window.location.pathname.split("/").pop() || "Home"}
+        </div>
       </div>
       <div className="tb-right">
-        <div className="logo-text">Hello, There</div>
+        <div className="logo-text">{currentTime}</div>
       </div>
     </div>
   );

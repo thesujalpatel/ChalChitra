@@ -1,4 +1,5 @@
 .top-bar {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 3;
@@ -13,10 +14,12 @@
     var(--canvas),
     transparent var(--bg_transparency)
   );
+  -webkit-backdrop-filter: blur(var(--blur));
   backdrop-filter: blur(var(--blur));
 }
 
 .top-bar > div {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -25,6 +28,7 @@
   font-size: 25px;
   color: var(--sub_canvas);
   padding-left: 25px;
+  text-transform: capitalize;
 }
 .tb-left,
 .tb-right {
@@ -47,7 +51,9 @@
   background-color: var(--secondary);
   cursor: pointer;
 }
-
+.logo-text {
+  font-size: 23px;
+}
 @media screen and (max-width: 768px) {
   .top-bar {
     width: 100%;
