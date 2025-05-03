@@ -9,13 +9,38 @@ function Topbar() {
   const [cookies, setCookie] = useCookies(["navState"]);
   const [isOpen, setIsOpen] = useState(cookies.navState ?? false);
 
-  // Run animation ONLY when isOpen changes
+  // Trigger animation when isOpen changes
   useEffect(() => {
     handleNavigation(isOpen);
   }, [isOpen]);
 
-  // Only set up global click listener once
+  // Global click listener
   useEffect(() => {
+    const navBtnClicked = () => {
+      const newState = !isOpen;
+      setCookie("navState", newState, {
+        expires: new Date(Date.now() + 86400000),
+        path: "/",
+      });
+      setIsOpen(newState);
+
+      const icon = document.querySelector(".icon");
+      if (icon) {
+        a(
+          icon,
+          { rotate: newState ? 180 : 0 },
+          {
+            type: "spring",
+            stiffness: 500,
+            damping: 50,
+            duration: 0.5,
+            ease: "easeInOut",
+            delay: window.innerWidth >= 768 ? 0.5 : 0,
+          }
+        );
+      }
+    };
+
     const handleClick = (e) => {
       const clickedOutside =
         !e.target.closest(".nav-btn") &&
@@ -34,7 +59,7 @@ function Topbar() {
 
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
-  }, [isOpen]);
+  }, [isOpen, setCookie]);
 
   const navBtnClicked = () => {
     const newState = !isOpen;
@@ -59,8 +84,6 @@ function Topbar() {
         }
       );
     }
-
-    // Navigation animation is handled in useEffect via isOpen
   };
 
   const [currentTime, setCurrentTime] = useState(
