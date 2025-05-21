@@ -28,8 +28,8 @@ Includes live sync, multiple themes, and protected admin routes.
 
 ## Screenshots
 
-![Landing Page](src/assets/img/screensorts/SS01.png)  
-![Notes List](src/assets/img/screensorts/SS02.png)
+![Landing Page](src/assets/img/screenshot/SS01.png)  
+![Notes List](src/assets/img/screenshot/SS02.png)
 
 ## Installation
 
